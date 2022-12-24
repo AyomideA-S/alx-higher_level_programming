@@ -17,5 +17,15 @@ class Square extends Rectangle {
   double () {
     this.size *= 2;
   }
+
+  charPrint (c) {
+    if (c === undefined) {
+      c = 'X';
+    }
+    const pattern = c.repeat(this.size);
+    for (let i = 0; i < this.size; i++) {
+      console.log(pattern);
+    }
+  }
 }
 module.exports = Square;
