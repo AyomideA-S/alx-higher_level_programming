@@ -28,8 +28,7 @@ class Square(Rectangle):
         self.height = value
 
     def update(self, *args, **kwargs):
-        """module update square
-        """
+        """ Updates arguments in Square """
         if len(args):
             for i, arg in enumerate(args):
                 if i == 0:
