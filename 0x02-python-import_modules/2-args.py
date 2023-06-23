@@ -4,11 +4,11 @@ if __name__ == '__main__':
     ac = len(argv) - 1
 
     if ac == 0:
-        print('{} arguments.'.format(ac))
+        print(f'{ac} arguments.')
     else:
         if ac == 1:
-            print('{} argument:'.format(ac))
+            print(f'{ac} argument:')
         else:
-            print('{} arguments:'.format(ac))
+            print(f'{ac} arguments:')
         for i in range(1, ac + 1):
-            print('{}: {}'.format(i, argv[i]))
+            print(f'{i}: {argv[i]}')

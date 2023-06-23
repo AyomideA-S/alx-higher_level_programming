@@ -1,10 +1,5 @@
 #!/usr/bin/python3
 from sys import argv
 if __name__ == '__main__':
-    res = 0
-    cnt = 1
-
-    while cnt < len(argv):
-        res += int(argv[cnt])
-        cnt += 1
+    res = sum(int(argv[cnt]) for cnt in range(1, len(argv)))
     print(res)

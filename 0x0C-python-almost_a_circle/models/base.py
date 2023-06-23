@@ -44,7 +44,7 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__ + ".json"
+        filename = f"{cls.__name__}.json"
         with open(filename, "w") as jsonfile:
             if list_objs is None:
                 jsonfile.write("[]")
@@ -74,10 +74,7 @@ class Base:
             **dictionary (dict): Key/value pairs of attributes to initialize.
         """
         if dictionary and dictionary != {}:
-            if cls.__name__ == "Rectangle":
-                new = cls(1, 1)
-            else:
-                new = cls(1)
+            new = cls(1, 1) if cls.__name__ == "Rectangle" else cls(1)
             new.update(**dictionary)
             return new
 
@@ -90,7 +87,7 @@ class Base:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-        filename = str(cls.__name__) + ".json"
+        filename = f"{str(cls.__name__)}.json"
         try:
             with open(filename, "r") as jsonfile:
                 list_dicts = Base.from_json_string(jsonfile.read())
@@ -104,7 +101,7 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__ + ".csv"
+        filename = f"{cls.__name__}.csv"
         with open(filename, "w", newline="") as csvfile:
             if list_objs is None or list_objs == []:
                 csvfile.write("[]")
@@ -125,7 +122,7 @@ class Base:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-        filename = cls.__name__ + ".csv"
+        filename = f"{cls.__name__}.csv"
         try:
             with open(filename, "r", newline="") as csvfile:
                 if cls.__name__ == "Rectangle":
@@ -157,7 +154,7 @@ class Base:
             turt.up()
             turt.goto(rect.x, rect.y)
             turt.down()
-            for i in range(2):
+            for _ in range(2):
                 turt.forward(rect.width)
                 turt.left(90)
                 turt.forward(rect.height)
@@ -170,7 +167,7 @@ class Base:
             turt.up()
             turt.goto(sq.x, sq.y)
             turt.down()
-            for i in range(2):
+            for _ in range(2):
                 turt.forward(sq.width)
                 turt.left(90)
                 turt.forward(sq.height)

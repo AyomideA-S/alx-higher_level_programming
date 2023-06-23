@@ -125,7 +125,7 @@ class TestSquare_size(unittest.TestCase):
 
     def test_frozenset_size(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Square(frozenset({1, 2, 3, 1}))
+            Square(frozenset({2, 3, 1}))
 
     def test_range_size(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
@@ -202,7 +202,7 @@ class TestSquare_x(unittest.TestCase):
 
     def test_frozenset_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Square(1, frozenset({1, 2, 3, 1}))
+            Square(1, frozenset({2, 3, 1}))
 
     def test_range_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
@@ -270,7 +270,7 @@ class TestSquare_y(unittest.TestCase):
 
     def test_frozenset_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Square(1, 3, frozenset({1, 2, 3, 1}))
+            Square(1, 3, frozenset({2, 3, 1}))
 
     def test_range_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
@@ -362,17 +362,17 @@ class TestSquare_stdout(unittest.TestCase):
     def test_str_method_print_size(self):
         s = Square(4)
         capture = TestSquare_stdout.capture_stdout(s, "print")
-        correct = "[Square] ({}) 0/0 - 4\n".format(s.id)
+        correct = f"[Square] ({s.id}) 0/0 - 4\n"
         self.assertEqual(correct, capture.getvalue())
 
     def test_str_method_size_x(self):
         s = Square(5, 5)
-        correct = "[Square] ({}) 5/0 - 5".format(s.id)
+        correct = f"[Square] ({s.id}) 5/0 - 5"
         self.assertEqual(correct, s.__str__())
 
     def test_str_method_size_x_y(self):
         s = Square(7, 4, 22)
-        correct = "[Square] ({}) 4/22 - 7".format(s.id)
+        correct = f"[Square] ({s.id}) 4/22 - 7"
         self.assertEqual(correct, str(s))
 
     def test_str_method_size_x_y_id(self):
@@ -466,13 +466,13 @@ class TestSquare_update_args(unittest.TestCase):
     def test_update_args_None_id(self):
         s = Square(10, 10, 10, 10)
         s.update(None)
-        correct = "[Square] ({}) 10/10 - 10".format(s.id)
+        correct = f"[Square] ({s.id}) 10/10 - 10"
         self.assertEqual(correct, str(s))
 
     def test_update_args_None_id_and_more(self):
         s = Square(10, 10, 10, 10)
         s.update(None, 4, 5)
-        correct = "[Square] ({}) 5/10 - 4".format(s.id)
+        correct = f"[Square] ({s.id}) 5/10 - 4"
         self.assertEqual(correct, str(s))
 
     def test_update_args_twice(self):
@@ -568,13 +568,13 @@ class TestSquare_update_kwargs(unittest.TestCase):
     def test_update_kwargs_None_id(self):
         s = Square(10, 10, 10, 10)
         s.update(id=None)
-        correct = "[Square] ({}) 10/10 - 10".format(s.id)
+        correct = f"[Square] ({s.id}) 10/10 - 10"
         self.assertEqual(correct, str(s))
 
     def test_update_kwargs_None_id_and_more(self):
         s = Square(10, 10, 10, 10)
         s.update(id=None, size=7, x=18)
-        correct = "[Square] ({}) 18/10 - 7".format(s.id)
+        correct = f"[Square] ({s.id}) 18/10 - 7"
         self.assertEqual(correct, str(s))
 
     def test_update_kwargs_twice(self):
