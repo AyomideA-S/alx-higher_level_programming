@@ -6,12 +6,7 @@
 # Return: Last digit
 
 def print_last_digit(number):
-    if number < 0:
-        last = (-1 * number) % 10
-
-    else:
-        last = number % 10
-
-    print('{}'.format(last), end='')
+    last = (-1 * number) % 10 if number < 0 else number % 10
+    print(f'{last}', end='')
 
     return last

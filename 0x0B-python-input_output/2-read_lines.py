@@ -15,7 +15,7 @@ def read_lines(filename="", nb_lines=0):
     with open(filename, "r") as f:
         for line in f:
             counter += 1
-            if nb_lines <= 0 or (counter <= nb_lines and nb_lines > 0):
+            if nb_lines <= 0 or counter <= nb_lines:
                 print(line, end='')
             else:
                 break

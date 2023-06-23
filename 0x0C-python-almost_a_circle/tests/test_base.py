@@ -155,7 +155,7 @@ class TestBase_save_to_file(unittest.TestCase):
     """Unittests for testing save_to_file method of Base class."""
 
     @classmethod
-    def tearDown(self):
+    def tearDown(cls):
         """Delete any created files."""
         try:
             os.remove("Rectangle.json")
@@ -339,7 +339,7 @@ class TestBase_load_from_file(unittest.TestCase):
     """Unittests for testing load_from_file_method of Base class."""
 
     @classmethod
-    def tearDown(self):
+    def tearDown(cls):
         """Delete any created files."""
         try:
             os.remove("Rectangle.json")
@@ -405,7 +405,7 @@ class TestBase_save_to_file_csv(unittest.TestCase):
     """Unittests for testing save_to_file_csv method of Base class."""
 
     @classmethod
-    def tearDown(self):
+    def tearDown(cls):
         """Delete any created files."""
         try:
             os.remove("Rectangle.csv")
@@ -483,7 +483,7 @@ class TestBase_load_from_file_csv(unittest.TestCase):
     """Unittests for testing load_from_file_csv method of Base class."""
 
     @classmethod
-    def tearDown(self):
+    def tearDown(cls):
         """Delete any created files."""
         try:
             os.remove("Rectangle.csv")

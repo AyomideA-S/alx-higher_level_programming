@@ -4,7 +4,4 @@
 # Return - True ifEquals lowercase, if otherwise False
 
 def islower(char):
-    if (ord(char) > 96 and ord(char) < 123):
-        return True
-    else:
-        return False
+    return ord(char) > 96 and ord(char) < 123

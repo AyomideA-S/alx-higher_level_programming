@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ 10-main """
+
 from models.square import Square
 
 if __name__ == "__main__":
@@ -13,4 +14,4 @@ if __name__ == "__main__":
     try:
         s1.size = "9"
     except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
+        print(f"[{e.__class__.__name__}] {e}")

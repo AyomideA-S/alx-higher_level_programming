@@ -59,12 +59,12 @@ class Rectangle(Base):
     @staticmethod
     def setter_validation(attribute, value):
         if type(value) != int:
-            raise TypeError("{} must be an integer".format(attribute))
-        if attribute == "x" or attribute == "y":
+            raise TypeError(f"{attribute} must be an integer")
+        if attribute in ["x", "y"]:
             if value < 0:
-                raise ValueError("{} must be >= 0".format(attribute))
+                raise ValueError(f"{attribute} must be >= 0")
         elif value <= 0:
-            raise ValueError("{} must be > 0".format(attribute))
+            raise ValueError(f"{attribute} must be > 0")
 
     def area(self):
         ''' Returns the area of the rectangle '''
@@ -72,20 +72,19 @@ class Rectangle(Base):
 
     def display(self):
         ''' Prints representation of the rectangle to the stdout '''
-        rectangle = ""
         print("\n" * self.y, end="")
-        for i in range(self.height):
-            rectangle += (" " * self.x) + ("#" * self.width) + "\n"
+        rectangle = "".join(
+            (" " * self.x) + ("#" * self.width) + "\n" for _ in range(self.height)
+        )
         print(rectangle, end="")
 
     def __str__(self):
         ''' Overwritting the str method '''
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
-                                                       self.width, self.height)
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
 
     def update(self, *args, **kwargs):
         ''' Updates the arguments in the class '''
-        if len(args) == 0:
+        if not args:
             for key, val in kwargs.items():
                 self.__setattr__(key, val)
             return

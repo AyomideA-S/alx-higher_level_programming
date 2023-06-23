@@ -150,7 +150,7 @@ class TestRectangle_width(unittest.TestCase):
 
     def test_frozenset_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle(frozenset({1, 2, 3, 1}), 2)
+            Rectangle(frozenset({2, 3, 1}), 2)
 
     def test_range_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
@@ -222,7 +222,7 @@ class TestRectangle_height(unittest.TestCase):
 
     def test_frozenset_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(1, frozenset({1, 2, 3, 1}))
+            Rectangle(1, frozenset({2, 3, 1}))
 
     def test_range_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
@@ -298,7 +298,7 @@ class TestRectangle_x(unittest.TestCase):
 
     def test_frozenset_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(1, 2, frozenset({1, 2, 3, 1}))
+            Rectangle(1, 2, frozenset({2, 3, 1}))
 
     def test_range_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
@@ -366,7 +366,7 @@ class TestRectangle_y(unittest.TestCase):
 
     def test_frozenset_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(1, 2, 3, frozenset({1, 2, 3, 1}))
+            Rectangle(1, 2, 3, frozenset({2, 3, 1}))
 
     def test_range_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
@@ -473,17 +473,17 @@ class TestRectangle_stdout(unittest.TestCase):
     def test_str_method_print_width_height(self):
         r = Rectangle(4, 6)
         capture = TestRectangle_stdout.capture_stdout(r, "print")
-        correct = "[Rectangle] ({}) 0/0 - 4/6\n".format(r.id)
+        correct = f"[Rectangle] ({r.id}) 0/0 - 4/6\n"
         self.assertEqual(correct, capture.getvalue())
 
     def test_str_method_width_height_x(self):
         r = Rectangle(5, 5, 1)
-        correct = "[Rectangle] ({}) 1/0 - 5/5".format(r.id)
+        correct = f"[Rectangle] ({r.id}) 1/0 - 5/5"
         self.assertEqual(correct, r.__str__())
 
     def test_str_method_width_height_x_y(self):
         r = Rectangle(1, 8, 2, 4)
-        correct = "[Rectangle] ({}) 2/4 - 1/8".format(r.id)
+        correct = f"[Rectangle] ({r.id}) 2/4 - 1/8"
         self.assertEqual(correct, str(r))
 
     def test_str_method_width_height_x_y_id(self):
@@ -574,13 +574,13 @@ class TestRectangle_update_args(unittest.TestCase):
     def test_update_args_None_id(self):
         r = Rectangle(10, 10, 10, 10, 10)
         r.update(None)
-        correct = "[Rectangle] ({}) 10/10 - 10/10".format(r.id)
+        correct = f"[Rectangle] ({r.id}) 10/10 - 10/10"
         self.assertEqual(correct, str(r))
 
     def test_update_args_None_id_and_more(self):
         r = Rectangle(10, 10, 10, 10, 10)
         r.update(None, 4, 5, 2)
-        correct = "[Rectangle] ({}) 2/10 - 4/5".format(r.id)
+        correct = f"[Rectangle] ({r.id}) 2/10 - 4/5"
         self.assertEqual(correct, str(r))
 
     def test_update_args_twice(self):
@@ -701,13 +701,13 @@ class TestRectangle_update_kwargs(unittest.TestCase):
     def test_update_kwargs_None_id(self):
         r = Rectangle(10, 10, 10, 10, 10)
         r.update(id=None)
-        correct = "[Rectangle] ({}) 10/10 - 10/10".format(r.id)
+        correct = f"[Rectangle] ({r.id}) 10/10 - 10/10"
         self.assertEqual(correct, str(r))
 
     def test_update_kwargs_None_id_and_more(self):
         r = Rectangle(10, 10, 10, 10, 10)
         r.update(id=None, height=7, y=9)
-        correct = "[Rectangle] ({}) 10/9 - 10/7".format(r.id)
+        correct = f"[Rectangle] ({r.id}) 10/9 - 10/7"
         self.assertEqual(correct, str(r))
 
     def test_update_kwargs_twice(self):

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """  Lists all cities under a given state from the database hbtn_0e_0_usa """
+
 import MySQLdb
 import sys
 
@@ -13,7 +14,7 @@ if __name__ == "__main__":
     WHERE states.name=%s
     ORDER BY states.id ASC""", (sys.argv[4],))
     rows = cur.fetchall()
-    tmp = list(row[0] for row in rows)
+    tmp = [row[0] for row in rows]
     print(*tmp, sep=", ")
     cur.close()
     db.close()
